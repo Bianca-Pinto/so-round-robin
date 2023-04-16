@@ -5,7 +5,7 @@ int main(){
       int i, nProcessos, somaTempo = 0, x, contador = 0, quantum;
       // TAM --> tamanho do vetor, declarado para ingresso, duracao e temp
       // Deve ser pelo menos o tamanho ou maior do que o numero de tarefas
-      int tempo_espera = 0, tempo_execucao = 0, ingresso[TAM], duracao[TAM], temp[TAM];
+      int tempo_espera = 0, tempo_execucao = 0, ingresso[TAM], duracao[TAM], temp[TAM], prioridade[TAM];
       float tempo_medio_espera, tempo_medio_execucao;
 
       // Inserindo o numero total de tarefas
@@ -22,6 +22,10 @@ int main(){
             // Inserindo o tempo de duracao de cada tarefa
             printf("Duracao:\t");
             scanf("%d", &duracao[i]);
+
+            // Inserindo as ordens de prioridade
+            printf("Prioridade:\t");
+            scanf("%d", &prioridade[i]);
  
             // Criando um vetor temporario para cada duracao
             temp[i] = duracao[i];
@@ -31,7 +35,7 @@ int main(){
       printf("\nInsira o Quantum:\t");
       scanf("%d", &quantum);
 
-      printf("\nProcesso n\t\t Duracao\t Execucao\t Espera\n");
+      printf("\nProcesso n\t\t T_Duracao\t T_Execucao\t T_Espera\n");
       for(somaTempo= 0, i = 0; x!=0;){
             // Se a duracao for menor ou igual ao quantum e maior do que 0
             if(temp[i] <= quantum && temp[i] > 0){
@@ -66,9 +70,9 @@ int main(){
       }
  
       tempo_medio_execucao = (float)tempo_execucao/nProcessos;
-      printf("\nTempo medio de execucao:\t%f\n", tempo_medio_execucao);
+      printf("\n\nTempo medio de execucao:\t%f", tempo_medio_execucao);
 
       tempo_medio_espera = (float)tempo_espera/nProcessos;
-      printf("\n\nTempo medio de espera:\t%f", tempo_medio_espera);
+      printf("\nTempo medio de espera:\t%f\n\n", tempo_medio_espera);
       return 0;
 }
